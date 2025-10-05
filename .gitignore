@@ -1,34 +1,21 @@
-# ------------------------
-# Unreal Engine Git Ignore
-# ------------------------
+# Bắt đầu bằng việc bỏ qua (ignore) tất cả mọi thứ trong thư mục dự án.
+*
 
-# Ignore all generated folders
-Binaries/
-DerivedDataCache/
-Intermediate/
-Saved/
+# Nhưng không bỏ qua các thư mục, để Git có thể quét vào bên trong chúng.
+!*/
 
-# Ignore all assets (Blueprints, Maps, Materials, Meshes, etc.)
-Content/**/*.uasset
-Content/**/*.umap
+# Cho phép (un-ignore) các loại file mã nguồn bạn muốn theo dõi.
+!*.cs
+!*.cpp
+!*.h
 
-# Keep only code, config, plugins, project file
-!Source/
-!Config/
-!Plugins/
+# QUAN TRỌNG: Cho phép file .uproject để có thể mở dự án.
 !*.uproject
 
-# IDE specific
-.vscode/
-.idea/
-*.sln
-*.suo
-*.opensdf
-*.sdf
-*.VC.db
-*.VC.opendb
+# Đề xuất: Cho phép các file cấu hình trong thư mục Config.
+# Đây là những file text nhỏ chứa setting quan trọng của game.
+!/Config/
+!/Config/*.ini
 
-# OS specific
-.DS_Store
-Thumbs.db
-desktop.ini
+# Cuối cùng, đừng bỏ qua chính file .gitignore này.
+!.gitignore
