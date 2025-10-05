@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class USunWukongDataAsset ******************************************************
 MYPROJECT_API UClass* Z_Construct_UClass_USunWukongDataAsset_NoRegister();
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_INCLASS_NO_PURE_DECLS \
+#define FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSunWukongDataAsset(); \
 	friend struct Z_Construct_UClass_USunWukongDataAsset_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(USunWukongDataAsset)
 
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_ENHANCED_CONSTRUCTORS \
+#define FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USunWukongDataAsset(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -42,12 +42,12 @@ public: \
 	NO_API virtual ~USunWukongDataAsset();
 
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_15_PROLOG
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_GENERATED_BODY \
+#define FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_15_PROLOG
+#define FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_INCLASS_NO_PURE_DECLS \
-	FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_ENHANCED_CONSTRUCTORS \
+	FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_INCLASS_NO_PURE_DECLS \
+	FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -57,6 +57,6 @@ class USunWukongDataAsset;
 // ********** End Class USunWukongDataAsset ********************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h
+#define CURRENT_FILE_ID FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_SunWukongDataAsset_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

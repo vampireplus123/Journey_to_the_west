@@ -104,14 +104,14 @@ AMyGameModeBase::~AMyGameModeBase() {}
 // ********** End Class AMyGameModeBase ************************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_Statics
+struct Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_AMyGameModeBase, AMyGameModeBase::StaticClass, TEXT("AMyGameModeBase"), &Z_Registration_Info_UClass_AMyGameModeBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyGameModeBase), 2756237296U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_416135774(TEXT("/Script/MyProject"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_416135774(TEXT("/Script/MyProject"),
+	Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_GameMode_MyGameModeBase_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

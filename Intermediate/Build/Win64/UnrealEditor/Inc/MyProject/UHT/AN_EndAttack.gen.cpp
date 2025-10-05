@@ -103,14 +103,14 @@ UAN_EndAttack::~UAN_EndAttack() {}
 // ********** End Class UAN_EndAttack **************************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_Statics
+struct Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UAN_EndAttack, UAN_EndAttack::StaticClass, TEXT("UAN_EndAttack"), &Z_Registration_Info_UClass_UAN_EndAttack, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UAN_EndAttack), 439010247U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_1021072646(TEXT("/Script/MyProject"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_1021072646(TEXT("/Script/MyProject"),
+	Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_AN_EndAttack_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

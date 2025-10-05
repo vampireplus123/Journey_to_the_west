@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class AEnemyCharacter **********************************************************
 MYPROJECT_API UClass* Z_Construct_UClass_AEnemyCharacter_NoRegister();
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_Character_EnemyCharacter_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_Journey_to_the_west_Source_MyProject_Public_Character_EnemyCharacter_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAEnemyCharacter(); \
 	friend struct Z_Construct_UClass_AEnemyCharacter_Statics; \
@@ -31,7 +31,7 @@ public: \
 	virtual UObject* _getUObject() const override { return const_cast<AEnemyCharacter*>(this); }
 
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_Character_EnemyCharacter_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_Journey_to_the_west_Source_MyProject_Public_Character_EnemyCharacter_h_17_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AEnemyCharacter(); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -43,12 +43,12 @@ public: \
 	NO_API virtual ~AEnemyCharacter();
 
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_Character_EnemyCharacter_h_14_PROLOG
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_Character_EnemyCharacter_h_17_GENERATED_BODY \
+#define FID_Journey_to_the_west_Source_MyProject_Public_Character_EnemyCharacter_h_14_PROLOG
+#define FID_Journey_to_the_west_Source_MyProject_Public_Character_EnemyCharacter_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_Character_EnemyCharacter_h_17_INCLASS_NO_PURE_DECLS \
-	FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_Character_EnemyCharacter_h_17_ENHANCED_CONSTRUCTORS \
+	FID_Journey_to_the_west_Source_MyProject_Public_Character_EnemyCharacter_h_17_INCLASS_NO_PURE_DECLS \
+	FID_Journey_to_the_west_Source_MyProject_Public_Character_EnemyCharacter_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -58,6 +58,6 @@ class AEnemyCharacter;
 // ********** End Class AEnemyCharacter ************************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_Character_EnemyCharacter_h
+#define CURRENT_FILE_ID FID_Journey_to_the_west_Source_MyProject_Public_Character_EnemyCharacter_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -133,14 +133,14 @@ UEnhancedInputData::~UEnhancedInputData() {}
 // ********** End Class UEnhancedInputData *********************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_Statics
+struct Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UEnhancedInputData, UEnhancedInputData::StaticClass, TEXT("UEnhancedInputData"), &Z_Registration_Info_UClass_UEnhancedInputData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UEnhancedInputData), 1536092782U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_2458226593(TEXT("/Script/MyProject"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_2458226593(TEXT("/Script/MyProject"),
+	Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Journey_to_the_west_Source_MyProject_Public_DataAsset_EnhancedInputData_h__Script_MyProject_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

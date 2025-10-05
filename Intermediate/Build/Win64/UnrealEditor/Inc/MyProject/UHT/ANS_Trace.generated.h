@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class UANS_Trace ***************************************************************
 MYPROJECT_API UClass* Z_Construct_UClass_UANS_Trace_NoRegister();
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_INCLASS_NO_PURE_DECLS \
+#define FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUANS_Trace(); \
 	friend struct Z_Construct_UClass_UANS_Trace_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(UANS_Trace)
 
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_ENHANCED_CONSTRUCTORS \
+#define FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UANS_Trace(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -42,12 +42,12 @@ public: \
 	NO_API virtual ~UANS_Trace();
 
 
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_ANS_Trace_h_13_PROLOG
-#define FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_GENERATED_BODY \
+#define FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_ANS_Trace_h_13_PROLOG
+#define FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_INCLASS_NO_PURE_DECLS \
-	FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_ENHANCED_CONSTRUCTORS \
+	FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_INCLASS_NO_PURE_DECLS \
+	FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_ANS_Trace_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -57,6 +57,6 @@ class UANS_Trace;
 // ********** End Class UANS_Trace *****************************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Users_Shadow_Documents_Unreal_Projects_MyProject_Source_MyProject_Public_AnimNotify_ANS_Trace_h
+#define CURRENT_FILE_ID FID_Journey_to_the_west_Source_MyProject_Public_AnimNotify_ANS_Trace_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
