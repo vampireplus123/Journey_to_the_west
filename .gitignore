@@ -1,21 +1,90 @@
-# Bắt đầu bằng việc bỏ qua (ignore) tất cả mọi thứ trong thư mục dự án.
+###############
+# 1. IGNORE TẤT CẢ MẶC ĐỊNH
+###############
 *
 
-# Nhưng không bỏ qua các thư mục, để Git có thể quét vào bên trong chúng.
+# Nhưng vẫn cho phép Git đi vào thư mục
 !*/
 
-# Cho phép (un-ignore) các loại file mã nguồn bạn muốn theo dõi.
-!*.cs
+###############
+# 2. GIỮ LẠI CÁC FILE CẦN THEO DÕI
+###############
+
+# Source code C++
 !*.cpp
 !*.h
+!*.hpp
+!*.c
 
-# QUAN TRỌNG: Cho phép file .uproject để có thể mở dự án.
+# C#
+!*.cs
+
+# Unreal Project
 !*.uproject
+!*.uplugin
 
-# Đề xuất: Cho phép các file cấu hình trong thư mục Config.
-# Đây là những file text nhỏ chứa setting quan trọng của game.
+# Config quan trọng
 !/Config/
 !/Config/*.ini
 
-# Cuối cùng, đừng bỏ qua chính file .gitignore này.
+# Source folder
+!/Source/
+!/Source/**
+
+###############
+# 3. GIỮ LẠI FILE CẦN THIẾT CHO IDE / BUILD
+###############
+
+# Visual Studio Solution / Project
+!*.sln
+!*.vcxproj
+!*.vcxproj.filters
+
+# C# project files (nếu dùng Rider / C# module)
+!*.csproj
+
+# CMake nếu có
+!CMakeLists.txt
+
+###############
+# 4. IGNORE BINARY, BUILD, INTERMEDIATE
+###############
+
+# Thư mục lớn không bao giờ commit
+/Binaries/
+/Build/
+/DerivedDataCache/
+/Intermediate/
+/Saved/
+/Script/
+/Plugins/*/Intermediate/
+/Plugins/*/Binaries/
+
+###############
+# 5. IGNORE FILE TỰ ĐỘNG SINH
+###############
+
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+
+# Rider / JetBrains
+.idea/
+
+# Backup / Logs
+*.log
+*.bak
+
+# Generated C++ code
+*.generated.h
+*_automoc.cpp
+
+# Cache file
+*.pdb
+*.obj
+
+###############
+# 6. GIỮ LẠI FILE .GITIGNORE
+###############
 !.gitignore
