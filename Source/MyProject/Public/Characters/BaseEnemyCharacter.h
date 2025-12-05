@@ -40,6 +40,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// --- INTERFACE IMPLEMENTATION (CÁC HÀM BẮT BUỘC) ---
+#pragma region Attack_Interface
 	virtual void I_DamageAble_TakeDamage(float Damage, AActor* DamageCauser) override;
 
     // IAttackInterface (Triển khai các hàm Pure Virtual để compile)
@@ -72,7 +73,7 @@ public:
 	virtual void PerformAttack() override;
 	virtual void PerformCombo() override;
 	virtual void PerformRangedAttack() override;
-
+#pragma endregion
 public:
 	// --- COMPONENTS ---
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components")
