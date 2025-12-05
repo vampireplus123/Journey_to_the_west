@@ -54,6 +54,12 @@ void ABaseEnemyCharacter::BeginPlay()
 	EnemyMaxHealth = HealthComponent ? HealthComponent->GetMaxHealth() : 0.f;
 }
 
+void ABaseEnemyCharacter::SetReadyToAttack()
+{
+	bIsStunned = false; 
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_RecoveryDelay);
+}
+
 void ABaseEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -124,6 +130,15 @@ void ABaseEnemyCharacter::HandleBeaten(const FVector& ShotFromDirection)
     }
     
 	PlayAnimMontage(EnemyDataAsset->HitMontage);
+	bIsStunned = true; // Khóa tấn công
+    
+	GetWorld()->GetTimerManager().SetTimer(
+		TimerHandle_RecoveryDelay, 
+		this, 
+		&ABaseEnemyCharacter::SetReadyToAttack, 
+		EnemyDataAsset->StunRecoveryDelay, // 1.0 giây
+		false
+	);
 }
 
 void ABaseEnemyCharacter::HandleDead()
@@ -159,7 +174,11 @@ void ABaseEnemyCharacter::HandleDead()
 
 void ABaseEnemyCharacter::I_PlayAttackMontage(UAnimMontage* AttackMontage) { PlayAnimMontage(AttackMontage); }
 void ABaseEnemyCharacter::I_RequestAttack() { PerformAttack(); }
-bool ABaseEnemyCharacter::I_DoesReadyAttack() const { return !HealthComponent || !HealthComponent->IsDead(); }
+bool ABaseEnemyCharacter::I_DoesReadyAttack() const
+{
+	if (bIsStunned) return false;
+	return !HealthComponent || !HealthComponent->IsDead();
+}
 bool ABaseEnemyCharacter::I_HasEnoughStamina(float Cost) const { return true; } 
 bool ABaseEnemyCharacter::I_IsAttacking() const { return false; }
 float ABaseEnemyCharacter::I_GetHealth() const { return EnemyHealth; }
@@ -168,7 +187,10 @@ float ABaseEnemyCharacter::I_GetStamina() const { return Stamina; }
 float ABaseEnemyCharacter::I_GetMaxStamina() const { return Stamina; }
 void ABaseEnemyCharacter::I_AN_EndAttack() {}
 void ABaseEnemyCharacter::I_AN_Combo() {}
-void ABaseEnemyCharacter::I_AN_EndHitReact() {} 
+void ABaseEnemyCharacter::I_AN_EndHitReact()
+{
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_RecoveryDelay);
+} 
 void ABaseEnemyCharacter::I_PlayStartAttackSound() {}
 void ABaseEnemyCharacter::I_RequestAttackFailed_Stamina(float StaminaCost) {}
 void ABaseEnemyCharacter::I_HandleAttackSuccess() {}

@@ -73,4 +73,6 @@ public:
 	FName EndPoint;
 	UPROPERTY(EditAnywhere,Category="Boss or Not")
 	bool bIsBoss;
+	UPROPERTY(EditAnywhere,Category="Stun Recovery Delay")
+	float StunRecoveryDelay = 1.0f;
 };

@@ -34,7 +34,13 @@ protected:
 
 	// --- TRACE VÀ UI NỘI BỘ ---
 	void TraceMeleeHit(); // Logic Trace
-	void HitTarget(AActor* Target); 
+	void HitTarget(AActor* Target);
+	// Timer Handle để tạo độ trễ 1 giây trước khi AI được phép tấn công lại
+	FTimerHandle TimerHandle_RecoveryDelay; 
+
+	// Hàm được gọi khi hết 1 giây trễ
+	UFUNCTION()
+	void SetReadyToAttack();
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -68,12 +74,12 @@ public:
 	virtual void I_ReceiveCombat(AActor* TargetActor) override;
 	virtual void I_ExitCombat() override;
 	virtual void I_HandleTargetExitCombat() override;
-
+#pragma endregion
 	// IEnemyCombatInterface
 	virtual void PerformAttack() override;
 	virtual void PerformCombo() override;
 	virtual void PerformRangedAttack() override;
-#pragma endregion
+
 public:
 	// --- COMPONENTS ---
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components")
@@ -119,4 +125,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat Settings")
 	float HitRadius = 50.f;
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AI State", meta = (AllowPrivateAccess = "true"))
+	bool bIsStunned = false;
 };
