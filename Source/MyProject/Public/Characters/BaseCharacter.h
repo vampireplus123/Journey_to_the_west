@@ -86,6 +86,7 @@ public:
 #pragma endregion
 public:
 	bool bIsStrafing = false;
+	bool bIsDodging = false;
 	
 //Component
 protected:
@@ -123,7 +124,11 @@ protected:
 		const class UDamageType* DamageType,
 		AActor* DamageCauser
 	);
+	//Timer
 	FTimerHandle TimerHandle_HealFinished;
+	FTimerHandle TimerHandle_DodgeFinished;
+
+	
 	float PendingHealAmount = 0.0f;
 	UFUNCTION()
 	void HandleHealingTimerFinished();

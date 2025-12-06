@@ -277,6 +277,10 @@ void ABaseCharacter::I_DoJump()
 }
 void ABaseCharacter::I_DamageAble_TakeDamage(float Damage, AActor* DamageCauser)
 {
+	if (bIsDodging) 
+	{
+		return; 
+	}
 	if (HealthComponent)
 	{
 		// 1. GỌI HEALTH COMPONENT ĐỂ TRỪ MÁU

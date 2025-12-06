@@ -75,4 +75,12 @@ public:
 	bool bIsBoss;
 	UPROPERTY(EditAnywhere,Category="Stun Recovery Delay")
 	float StunRecoveryDelay = 1.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Defense")
+	UAnimMontage* BlockMontage;       // Dáng đứng đỡ (Loop)
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Defense")
+	UAnimMontage* BlockImpactMontage; // Khi đỡ trúng (Rung nhẹ)
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Defense")
+	UAnimMontage* GuardBreakMontage;
 };

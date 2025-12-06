@@ -60,6 +60,28 @@ void ABaseEnemyCharacter::SetReadyToAttack()
 	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_RecoveryDelay);
 }
 
+void ABaseEnemyCharacter::StartBlocking()
+{
+	// 1. SAFEGUARD: Nếu không phải Boss -> Không bao giờ cho phép Block
+	if (!EnemyDataAsset || !EnemyDataAsset->bIsBoss) return;
+
+	bIsBlocking = true;
+	if (EnemyDataAsset->BlockMontage) PlayAnimMontage(EnemyDataAsset->BlockMontage);
+}
+
+void ABaseEnemyCharacter::StopBlocking()
+{
+	bIsBlocking = false;
+	if (EnemyDataAsset && EnemyDataAsset->BlockMontage) StopAnimMontage(EnemyDataAsset->BlockMontage);
+}
+
+bool ABaseEnemyCharacter::IsAttackFromFront(AActor* Attacker)
+{
+	if (!Attacker) return false;
+	FVector Forward = GetActorForwardVector();
+	FVector ToAttacker = (Attacker->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+	return FVector::DotProduct(Forward, ToAttacker) > 0.0f; // > 0 là phía trước
+}
 void ABaseEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -72,50 +94,124 @@ void ABaseEnemyCharacter::I_DamageAble_TakeDamage(float Damage, AActor* DamageCa
 {
 	if (!HealthComponent || HealthComponent->IsDead()) return;
 
-	// 1. Trừ máu
-	HealthComponent->ApplyDamage(Damage, DamageCauser);
+	float FinalDamage = Damage;    // Sát thương cuối cùng sẽ nhận
+	bool bBlockSuccess = false;    // Đỡ được đòn hay không?
+	bool bIsGuardBroken = false;   // Có bị vỡ khiên không?
 
-	// 2. CHECK CHẾT & PHẢN ỨNG
-	if (HealthComponent->IsDead())
+	// ==============================================================
+	// BƯỚC 1: XỬ LÝ LOGIC BLOCK (CHỈ DÀNH CHO BOSS/ELITE)
+	// ==============================================================
+	// Điều kiện: Đang bật Block VÀ Đòn đánh từ phía trước
+	if (bIsBlocking && IsAttackFromFront(DamageCauser))
 	{
-		HandleDead(); // Chạy logic chết
-	}
-	else
-	{
-		// HIT REACTION (Montage Hit đơn giản)
-		if (DamageCauser)
-		{
-			FVector ShotFromDirection = (DamageCauser->GetActorLocation() - GetActorLocation()).GetSafeNormal();
-			HandleBeaten(ShotFromDirection); 
-		}
-		
-		// 3. CẬP NHẬT UI (Boss/Minion Split)
-		bool bIsBoss = (EnemyDataAsset && EnemyDataAsset->bIsBoss);
+		// 1.1. Trừ Stamina thay vì máu
+		// Bạn có thể chỉnh công thức: Stamina mất = Damage gốc
+		CurrentStamina -= Damage; 
 
-		if (bIsBoss)
+		// 1.2. Kiểm tra Vỡ Khiên (Guard Break)
+		if (CurrentStamina <= 0.0f)
 		{
-			// BOSS: Gọi Manager (Thanh to)
-			if (UUIManagerSubsystem* UI = UUIManagerSubsystem::Get(this))
+			bIsGuardBroken = true;
+			CurrentStamina = 0.0f;
+			
+			// Tắt trạng thái Block ngay lập tức
+			StopBlocking();
+
+			// Logic Vỡ Khiên:
+			// - Vẫn nhận 50% sát thương (Penalty)
+			FinalDamage = Damage * 0.5f;
+
+			// - Chạy Animation Vỡ Khiên (Stun rất lâu)
+			if (EnemyDataAsset && EnemyDataAsset->GuardBreakMontage)
 			{
-				UI->ShowBossHUD(true);
-				UI->UpdateBossHealth(HealthComponent->Health, HealthComponent->MaxHealth);
+				PlayAnimMontage(EnemyDataAsset->GuardBreakMontage);
 			}
+
+			// Debug
+			// GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("GUARD BROKEN!"));
 		}
 		else
 		{
-			// MINION: Cập nhật Widget Component trên đầu
-			if (HealthBarComponent)
+			// 1.3. Đỡ Thành Công (Perfect Block)
+			bBlockSuccess = true;
+			FinalDamage = 0.0f; // Không mất máu
+
+			// Chạy Animation Rung nhẹ (Impact)
+			if (EnemyDataAsset && EnemyDataAsset->BlockImpactMontage)
 			{
-				HealthBarComponent->SetVisibility(true);
-				if (UEnemyUserWidget* Bar = Cast<UEnemyUserWidget>(HealthBarComponent->GetUserWidgetObject()))
+				PlayAnimMontage(EnemyDataAsset->BlockImpactMontage);
+			}
+
+			// Debug
+			// GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Blue, TEXT("BLOCKED!"));
+		}
+	}
+
+	// ==============================================================
+	// BƯỚC 2: ÁP DỤNG SÁT THƯƠNG
+	// ==============================================================
+	if (FinalDamage > 0.0f)
+	{
+		HealthComponent->ApplyDamage(FinalDamage, DamageCauser);
+	}
+
+	// ==============================================================
+	// BƯỚC 3: CHECK CHẾT HOẶC PHẢN ỨNG (HIT REACT)
+	// ==============================================================
+	if (HealthComponent->IsDead())
+	{
+		StopBlocking(); // Chết thì buông tay
+		HandleDead();   // Logic chết (Ragdoll, UI, Destroy)
+	}
+	else
+	{
+		// Nếu KHÔNG Block được (bị đánh lén hoặc không bật block) 
+		// VÀ KHÔNG phải vừa bị Guard Break (vì Guard Break đã có anim riêng rồi)
+		if (!bBlockSuccess && !bIsGuardBroken)
+		{
+			if (DamageCauser)
+			{
+				// Nếu đang Block mà bị đánh sau lưng -> Văng Block (Break Stance)
+				if (bIsBlocking) 
 				{
-					Bar->UpdateHealth(HealthComponent->Health, HealthComponent->MaxHealth);
+					StopBlocking();
 				}
+
+				// Chạy Hit React bình thường
+				FVector ShotFromDirection = (DamageCauser->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+				HandleBeaten(ShotFromDirection); 
+			}
+		}
+	}
+
+	// ==============================================================
+	// BƯỚC 4: CẬP NHẬT UI (BOSS VS MINION)
+	// ==============================================================
+	bool bIsBoss = (EnemyDataAsset && EnemyDataAsset->bIsBoss);
+
+	if (bIsBoss)
+	{
+		// BOSS: Gọi Manager (Thanh máu to trên màn hình)
+		if (UUIManagerSubsystem* UI = UUIManagerSubsystem::Get(this))
+		{
+			// Đảm bảo thanh Boss hiện lên
+			UI->ShowBossHUD(true); 
+			UI->UpdateBossHealth(HealthComponent->Health, HealthComponent->MaxHealth);
+		}
+	}
+	else
+	{
+		// MINION: Cập nhật Widget Component trên đầu
+		if (HealthBarComponent)
+		{
+			HealthBarComponent->SetVisibility(true);
+			if (UEnemyUserWidget* Bar = Cast<UEnemyUserWidget>(HealthBarComponent->GetUserWidgetObject()))
+			{
+				Bar->UpdateHealth(HealthComponent->Health, HealthComponent->MaxHealth);
 			}
 		}
 	}
 }
-
 // ------------------------------------------------------------------
 // LOGIC SỐNG SÓT VÀ CHẾT
 // ------------------------------------------------------------------

@@ -18,7 +18,7 @@ public:
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
 	// Có đang nhảy hoặc rơi không
-	UPROPERTY(BlueprintReadOnly, Category = "Movement")
+	UPROPERTY(BlueprintReadOnly, Category = "Jump")
 	bool bIsJumping = false;
 
 	// Tốc độ để blend chạy / idle

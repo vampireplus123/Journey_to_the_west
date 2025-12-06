@@ -44,7 +44,6 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	EnhancedInputComponent->BindAction(EnhancedInputData->IA_StrongAttack, ETriggerEvent::Started, this, &APlayerCharacter::StrongAttackPressed);
 	EnhancedInputComponent->BindAction(EnhancedInputData->IA_ExitCombat, ETriggerEvent::Started, this, &APlayerCharacter::ExitCombatPressed);
 	EnhancedInputComponent->BindAction(EnhancedInputData->IA_Health, ETriggerEvent::Started, this, &APlayerCharacter::HealPressed);
-	
 }
 
 void APlayerCharacter::BeginPlay()
@@ -281,6 +280,8 @@ void APlayerCharacter::HealPressed()
 		BaseCharacterData->HealthRestoreAmount
 	);
 }
+
+
 
 void APlayerCharacter::I_DoJump()
 {

@@ -23,6 +23,8 @@ class MYPROJECT_API ABaseEnemyCharacter : public ACharacter,
 
 public:
 	ABaseEnemyCharacter();
+	void StartBlocking();
+	void StopBlocking();
 
 protected:
 	virtual void BeginPlay() override;
@@ -41,6 +43,10 @@ protected:
 	// Hàm được gọi khi hết 1 giây trễ
 	UFUNCTION()
 	void SetReadyToAttack();
+	bool bIsBlocking = false;
+	float CurrentStamina;
+	
+	bool IsAttackFromFront(AActor* Attacker);
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -76,6 +82,9 @@ public:
 	virtual void I_HandleTargetExitCombat() override;
 #pragma endregion
 	// IEnemyCombatInterface
+
+
+	
 	virtual void PerformAttack() override;
 	virtual void PerformCombo() override;
 	virtual void PerformRangedAttack() override;

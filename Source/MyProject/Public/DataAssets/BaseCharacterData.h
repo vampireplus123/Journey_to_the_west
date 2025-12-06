@@ -131,4 +131,13 @@ public:
 	//Health
 	UPROPERTY(EditDefaultsOnly, Category = "Healing")
 	UAnimMontage* HealMontage;
+	/*Dogde*/
+	 UPROPERTY(EditDefaultsOnly, Category = "Combat|Dodge")
+	UAnimMontage* DodgeMontage; 
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combat|Dodge")
+	float DodgeStaminaCost = 25.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combat|Dodge")
+	float DodgeSpeed = 1000.0f;
 };
